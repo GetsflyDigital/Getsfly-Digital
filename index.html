@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +13,7 @@
         body {
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
         
         .gradient-bg {
@@ -85,190 +87,227 @@
             40% {transform: translateY(-15px);}
             60% {transform: translateY(-7px);}
         }
+
+        /* Mobile menu styles */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+
+        /* Hero image adjustments */
+        .hero-images {
+            position: relative;
+            height: 300px;
+            margin-top: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-images {
+                height: auto;
+                margin-top: 0;
+            }
+        }
+
+        /* Larger tap targets for mobile */
+        a, button, input, .service-card {
+            touch-action: manipulation;
+        }
     </style>
 </head>
 <body class="bg-[#f2f2f2] text-[#1f1f1f]">
     <!-- Navigation -->
     <nav class="fixed w-full bg-white shadow-md z-50">
-        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+        <div class="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
             <div class="flex items-center">
                 <a href="#" class="text-2xl font-bold text-[#1f1f1f]">
                     <span class="text-[#e83528]">Gets</span>Fly Digital
                 </a>
             </div>
             
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="Index.html" class="text-[#1f1f1f] font-medium hover:text-[#e83528] transition">Home</a>
+            <div class="hidden md:flex items-center space-x-4 lg:space-x-8">
+                <a href="AgencyHome.html" class="text-[#1f1f1f] font-medium hover:text-[#e83528] transition">Home</a>
                 <a href="services.html" class="text-[#1f1f1f] font-medium hover:text-[#e83528] transition">Services</a>
-               
                 <a href="getsflyteam.html" class="text-[#1f1f1f] font-medium hover:text-[#e83528] transition">Team</a>
                 <a href="contactgetsfly.html" class="text-[#1f1f1f] font-medium hover:text-[#e83528] transition">Contact</a>
-                <a href="#contact" class="bg-[#e83528] text-white px-6 py-2 rounded-full font-medium hover:bg-[#7c3aed] transition">
+                <a href="#contact" class="bg-[#e83528] text-white px-4 py-2 lg:px-6 lg:py-2 rounded-full font-medium hover:bg-[#7c3aed] transition whitespace-nowrap">
                     Let's Build Your Brand 🚀
                 </a>
             </div>
             
-            <button class="md:hidden focus:outline-none">
+            <button id="mobileMenuButton" class="md:hidden focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </button>
         </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu md:hidden bg-white w-full px-4">
+            <div class="flex flex-col space-y-4 py-4">
+                <a href="Index.html" class="text-[#1f1f1f] font-medium hover:text-[#e83528] transition py-2">Home</a>
+                <a href="services.html" class="text-[#1f1f1f] font-medium hover:text-[#e83528] transition py-2">Services</a>
+                <a href="getsflyteam.html" class="text-[#1f1f1f] font-medium hover:text-[#e83528] transition py-2">Team</a>
+                <a href="contactgetsfly.html" class="text-[#1f1f1f] font-medium hover:text-[#e83528] transition py-2">Contact</a>
+                <a href="#contact" class="bg-[#e83528] text-white px-6 py-3 rounded-full font-medium hover:bg-[#7c3aed] transition text-center">
+                    Let's Build Your Brand 🚀
+                </a>
+            </div>
+        </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="gradient-bg text-white pt-32 pb-20 px-6">
+    <section class="gradient-bg text-white pt-24 md:pt-32 pb-12 md:pb-20 px-4 sm:px-6">
         <div class="container mx-auto flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 mb-12 md:mb-0">
-                <h1 class="glitch text-5xl md:text-6xl font-bold mb-6" data-text="Create. Elevate. Dominate.">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h1 class="glitch text-4xl sm:text-5xl md:text-6xl font-bold mb-4 md:mb-6" data-text="Create. Elevate. Dominate.">
                     Create. Elevate. Dominate.
                 </h1>
-                <p class="text-xl mb-8">
+                <p class="text-lg md:text-xl mb-6 md:mb-8">
                     Designs that actually land. Content that actually connects. GetsFly builds what brands need to stand out.
                 </p>
-                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                    <a href="#contact" class="bg-[#e83528] hover:bg-[#7c3aed] text-white px-8 py-3 rounded-full font-bold text-center transition">
+                <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 md:space-x-4">
+                    <a href="#contact" class="bg-[#e83528] hover:bg-[#7c3aed] text-white px-6 py-3 md:px-8 md:py-3 rounded-full font-bold text-center transition">
                         Start Your Project
                     </a>
-                    <a href="#portfolio" class="bg-transparent hover:bg-white hover:text-[#1f1f1f] border-2 border-white text-white px-8 py-3 rounded-full font-bold text-center transition">
+                    <a href="#portfolio" class="bg-transparent hover:bg-white hover:text-[#1f1f1f] border-2 border-white text-white px-6 py-3 md:px-8 md:py-3 rounded-full font-bold text-center transition">
                         See Our Work
                     </a>
                 </div>
-                <div class="mt-12">
+                <div class="mt-8 md:mt-12">
                     <div class="flex items-center">
-                        <div class="text-4xl font-bold mr-4" id="clientCount">0</div>
-                        <div class="text-lg">
+                        <div class="text-3xl md:text-4xl font-bold mr-4" id="clientCount">0</div>
+                        <div class="text-base md:text-lg">
                             <div>creators, brands & startups</div>
-                           <div class="relative inline-block font-bold text-white tracking-tight text-base sm:text-lg md:text-xl">
-  <span class="absolute left-0 top-0 text-[#7c3aed] -z-10 blur-sm">trusting our work</span>
-  trusting our work
-</div>
+                            <div class="relative inline-block font-bold text-white tracking-tight text-sm md:text-base lg:text-lg">
+                                <span class="absolute left-0 top-0 text-[#7c3aed] -z-10 blur-sm">trusting our work</span>
+                                trusting our work
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="md:w-1/2">
-  
-  <img src="https://i.postimg.cc/3JN2GCvR/charac-1-1.png" alt="Character" style="position: absolute; right: 30px; bottom: 396px; height: 400px;" />
-<img src="https://i.postimg.cc/jjBR8T8m/charac-2-1.png" alt="Character" style="position: absolute; right: 450px; bottom: 396px; height: 400px;" />
-
-            </div>
-        </div>
+         
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-20 px-6 bg-white">
+    <section id="services" class="py-16 md:py-20 px-4 sm:px-6 bg-white">
         <div class="container mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-4">Everything You Need to Build & Scale Online</h2>
-            <p class="text-xl text-center mb-16 max-w-3xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Everything You Need to Build & Scale Online</h2>
+            <p class="text-lg md:text-xl text-center mb-12 md:mb-16 max-w-3xl mx-auto">
                 Comprehensive digital solutions tailored to your brand's unique needs.
             </p>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 <!-- Service Card 1 -->
-                <div class="service-card bg-[#f2f2f2] p-8 rounded-xl transition cursor-pointer">
-                    <div class="text-[#7c3aed] text-4xl mb-4">w
+                <div class="service-card bg-[#f2f2f2] p-6 md:p-8 rounded-xl transition cursor-pointer">
+                    <div class="text-[#7c3aed] text-4xl mb-4">
+                        <i class="fas fa-hashtag"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2">Social Media Management</h3>
-                    <p class="text-[#666]">Strategic content creation and scheduling for maximum engagement.</p>
+                    <h3 class="text-xl md:text-2xl font-bold mb-2">Social Media Management</h3>
+                    <p class="text-[#666] text-sm md:text-base">Strategic content creation and scheduling for maximum engagement.</p>
                 </div>
                 
                 <!-- Service Card 2 -->
-                <div class="service-card bg-[#f2f2f2] p-8 rounded-xl transition cursor-pointer">
+                <div class="service-card bg-[#f2f2f2] p-6 md:p-8 rounded-xl transition cursor-pointer">
                     <div class="text-[#7c3aed] text-4xl mb-4">
                         <i class="fas fa-video"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2">Video Editing + Thumbnails</h3>
-                    <p class="text-[#666]">Eye-catching visuals that stop the scroll and drive views.</p>
+                    <h3 class="text-xl md:text-2xl font-bold mb-2">Video Editing + Thumbnails</h3>
+                    <p class="text-[#666] text-sm md:text-base">Eye-catching visuals that stop the scroll and drive views.</p>
                 </div>
                 
                 <!-- Service Card 3 -->
-                <div class="service-card bg-[#f2f2f2] p-8 rounded-xl transition cursor-pointer">
+                <div class="service-card bg-[#f2f2f2] p-6 md:p-8 rounded-xl transition cursor-pointer">
                     <div class="text-[#7c3aed] text-4xl mb-4">
                         <i class="fas fa-code"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2">Website Design & Development</h3>
-                    <p class="text-[#666]">Custom sites that convert visitors into customers.</p>
+                    <h3 class="text-xl md:text-2xl font-bold mb-2">Website Design & Development</h3>
+                    <p class="text-[#666] text-sm md:text-base">Custom sites that convert visitors into customers.</p>
                 </div>
                 
                 <!-- Service Card 4 -->
-                <div class="service-card bg-[#f2f2f2] p-8 rounded-xl transition cursor-pointer">
+                <div class="service-card bg-[#f2f2f2] p-6 md:p-8 rounded-xl transition cursor-pointer">
                     <div class="text-[#7c3aed] text-4xl mb-4">
                         <i class="fas fa-cube"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2">3D Modeling & Product Visualization</h3>
-                    <p class="text-[#666]">Bring your products to life with stunning 3D renders.</p>
+                    <h3 class="text-xl md:text-2xl font-bold mb-2">3D Modeling & Product Visualization</h3>
+                    <p class="text-[#666] text-sm md:text-base">Bring your products to life with stunning 3D renders.</p>
                 </div>
                 
                 <!-- Service Card 5 -->
-                <div class="service-card bg-[#f2f2f2] p-8 rounded-xl transition cursor-pointer">
+                <div class="service-card bg-[#f2f2f2] p-6 md:p-8 rounded-xl transition cursor-pointer">
                     <div class="text-[#7c3aed] text-4xl mb-4">
                         <i class="fas fa-palette"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2">Branding + Starter Packs</h3>
-                    <p class="text-[#666]">Complete visual identity systems that tell your story.</p>
+                    <h3 class="text-xl md:text-2xl font-bold mb-2">Branding + Starter Packs</h3>
+                    <p class="text-[#666] text-sm md:text-base">Complete visual identity systems that tell your story.</p>
                 </div>
                 
                 <!-- Service Card 6 -->
-                <div class="service-card bg-[#f2f2f2] p-8 rounded-xl transition cursor-pointer">
+                <div class="service-card bg-[#f2f2f2] p-6 md:p-8 rounded-xl transition cursor-pointer">
                     <div class="text-[#7c3aed] text-4xl mb-4">
                         <i class="fas fa-shopping-cart"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-2">Ecommerce Setup & Ad Management</h3>
-                    <p class="text-[#666]">Turn browsers into buyers with optimized shopping experiences.</p>
+                    <h3 class="text-xl md:text-2xl font-bold mb-2">Ecommerce Setup & Ad Management</h3>
+                    <p class="text-[#666] text-sm md:text-base">Turn browsers into buyers with optimized shopping experiences.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Why Choose Us Section -->
-    <section class="py-20 px-6 bg-[#f2f2f2]">
+    <section class="py-16 md:py-20 px-4 sm:px-6 bg-[#f2f2f2]">
         <div class="container mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-4">Designs That Actually Land</h2>
-            <p class="text-xl text-center mb-16 max-w-3xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Designs That Actually Land</h2>
+            <p class="text-lg md:text-xl text-center mb-12 md:mb-16 max-w-3xl mx-auto">
                 We don't just make it pretty. We make it click, save, share, and convert.
             </p>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                 <!-- Feature 1 -->
-                <div class="bg-white p-8 rounded-xl shadow-sm">
+                <div class="bg-white p-6 md:p-8 rounded-xl shadow-sm">
                     <div class="text-[#e83528] text-4xl mb-4">
                         <i class="fas fa-bolt"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Speed That Matches Your Grind</h3>
-                    <p class="text-[#666] mb-4">
+                    <h3 class="text-xl md:text-2xl font-bold mb-4">Speed That Matches Your Grind</h3>
+                    <p class="text-[#666] text-sm md:text-base mb-4">
                         Quick edits, clean delivery. We move at your pace without sacrificing quality.
                     </p>
-                    <div class="text-[#7c3aed] font-medium">Always moving, always sharp</div>
+                    <div class="text-[#7c3aed] font-medium text-sm md:text-base">Always moving, always sharp</div>
                 </div>
                 
                 <!-- Feature 2 -->
-                <div class="bg-white p-8 rounded-xl shadow-sm">
+                <div class="bg-white p-6 md:p-8 rounded-xl shadow-sm">
                     <div class="text-[#e83528] text-4xl mb-4">
                         <i class="fas fa-bullseye"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Designs That Actually Land</h3>
-                    <p class="text-[#666] mb-4">
+                    <h3 class="text-xl md:text-2xl font-bold mb-4">Designs That Actually Land</h3>
+                    <p class="text-[#666] text-sm md:text-base mb-4">
                         Real strategy behind every graphic. Custom-crafted, never cookie-cutter.
                     </p>
-                    <div class="text-[#7c3aed] font-medium">Built to feel like your brand</div>
+                    <div class="text-[#7c3aed] font-medium text-sm md:text-base">Built to feel like your brand</div>
                 </div>
                 
                 <!-- Feature 3 -->
-                <div class="bg-white p-8 rounded-xl shadow-sm">
+                <div class="bg-white p-6 md:p-8 rounded-xl shadow-sm">
                     <div class="text-[#e83528] text-4xl mb-4">
                         <i class="fas fa-fire"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Creative That Cuts Through Noise</h3>
-                    <p class="text-[#666] mb-4">
+                    <h3 class="text-xl md:text-2xl font-bold mb-4">Creative That Cuts Through Noise</h3>
+                    <p class="text-[#666] text-sm md:text-base mb-4">
                         Visuals that vibe and work. Edits with flow, graphics with purpose.
                     </p>
-                    <div class="text-[#7c3aed] font-medium">Built for clicks, not dust</div>
+                    <div class="text-[#7c3aed] font-medium text-sm md:text-base">Built for clicks, not dust</div>
                 </div>
             </div>
             
-            <div class="mt-16 text-center">
-                <p class="text-xl font-medium italic">
+            <div class="mt-12 md:mt-16 text-center">
+                <p class="text-lg md:text-xl font-medium italic">
                     "We make brands move."
                 </p>
             </div>
@@ -276,22 +315,22 @@
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="py-20 px-6 bg-white">
+    <section id="portfolio" class="py-16 md:py-20 px-4 sm:px-6 bg-white">
         <div class="container mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-4">Our Work Speaks Volumes</h2>
-            <p class="text-xl text-center mb-12 max-w-3xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Our Work Speaks Volumes</h2>
+            <p class="text-lg md:text-xl text-center mb-8 md:mb-12 max-w-3xl mx-auto">
                 A selection of projects we're proud to have created.
             </p>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 <!-- Portfolio Item 1 -->
                 <div class="portfolio-item overflow-hidden rounded-xl cursor-pointer">
                     <div class="relative group">
                         <img src="https://i.postimg.cc/0jvLkTpH/Valo-thumbnail.png" 
                              alt="Brand Identity Project" 
-                             class="w-full h-64 object-cover transition duration-500">
+                             class="w-full h-48 sm:h-56 md:h-64 object-cover transition duration-500">
                         <div class="absolute inset-0 bg-[#e83528] bg-opacity-80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                            <span class="text-white text-xl font-bold"> Thumbnail </span>
+                            <span class="text-white text-lg md:text-xl font-bold"> Thumbnail </span>
                         </div>
                     </div>
                 </div>
@@ -301,9 +340,9 @@
                     <div class="relative group">
                         <img src="https://i.postimg.cc/hPT1bJRx/0631-D2-D7-3-F4-E-41-B8-B093-6942-F008-F8-F3.png" 
                              alt="Website Design" 
-                             class="w-full h-64 object-cover transition duration-500">
+                             class="w-full h-48 sm:h-56 md:h-64 object-cover transition duration-500">
                         <div class="absolute inset-0 bg-[#7c3aed] bg-opacity-80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                            <span class="text-white text-xl font-bold">Website Design</span>
+                            <span class="text-white text-lg md:text-xl font-bold">Website Design</span>
                         </div>
                     </div>
                 </div>
@@ -313,9 +352,9 @@
                     <div class="relative group">
                         <img src="https://i.postimg.cc/sDm90k1D/theospc-biz-thumbnail.png" 
                              alt="Social Media Design" 
-                             class="w-full h-64 object-cover transition duration-500">
+                             class="w-full h-48 sm:h-56 md:h-64 object-cover transition duration-500">
                         <div class="absolute inset-0 bg-[#1f1f1f] bg-opacity-80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                            <span class="text-white text-xl font-bold">Social Media Design</span>
+                            <span class="text-white text-lg md:text-xl font-bold">Social Media Design</span>
                         </div>
                     </div>
                 </div>
@@ -325,9 +364,9 @@
                     <div class="relative group">
                         <img src="https://i.postimg.cc/3RLYqJMF/image.png" 
                              alt="Product Visualization" 
-                             class="w-full h-64 object-cover transition duration-500">
+                             class="w-full h-48 sm:h-56 md:h-64 object-cover transition duration-500">
                         <div class="absolute inset-0 bg-[#e83528] bg-opacity-80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                            <span class="text-white text-xl font-bold">3D Product</span>
+                            <span class="text-white text-lg md:text-xl font-bold">3D Product</span>
                         </div>
                     </div>
                 </div>
@@ -337,9 +376,9 @@
                     <div class="relative group">
                         <img src="https://media.gettyimages.com/id/1037595872/video/color-grading-a-video-in-editing-tutorial.jpg?s=640x640&k=20&c=XBJSrBsPm2lh934FM1n-wwkHu8DZ3m_45CtPS8fOSuA=" 
                              alt="Video Production" 
-                             class="w-full h-64 object-cover transition duration-500">
+                             class="w-full h-48 sm:h-56 md:h-64 object-cover transition duration-500">
                         <div class="absolute inset-0 bg-[#7c3aed] bg-opacity-80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                            <span class="text-white text-xl font-bold">Video Editing</span>
+                            <span class="text-white text-lg md:text-xl font-bold">Video Editing</span>
                         </div>
                     </div>
                 </div>
@@ -349,74 +388,72 @@
                     <div class="relative group">
                         <img src="https://www.creatopy.com/blog/wp-content/uploads/2023/04/The-Ultimate-Guide-to-YouTube-Advertising-How-To-Set-Up-Run-Effective-Ads.png" 
                              alt="Ad Running" 
-                             class="w-full h-64 object-cover transition duration-500">
+                             class="w-full h-48 sm:h-56 md:h-64 object-cover transition duration-500">
                         <div class="absolute inset-0 bg-[#1f1f1f] bg-opacity-80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                            <span class="text-white text-xl font-bold">AD Running </span>
+                            <span class="text-white text-lg md:text-xl font-bold">AD Running </span>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="py-20 px-6 bg-[#f2f2f2]">
+    <section class="py-16 md:py-20 px-4 sm:px-6 bg-[#f2f2f2]">
         <div class="container mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-4">What Our Clients Say</h2>
-            <p class="text-xl text-center mb-16 max-w-3xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">What Our Clients Say</h2>
+            <p class="text-lg md:text-xl text-center mb-12 md:mb-16 max-w-3xl mx-auto">
                 Don't just take our word for it - here's what our clients have to say.
             </p>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                 <!-- Testimonial 1 -->
-                <div class="bg-white p-8 rounded-xl shadow-sm">
+                <div class="bg-white p-6 md:p-8 rounded-xl shadow-sm">
                     <div class="text-[#7c3aed] text-3xl mb-4">
                         <i class="fas fa-quote-left"></i>
                     </div>
-                    <p class="text-[#666] mb-6 italic">
+                    <p class="text-[#666] text-sm md:text-base mb-4 md:mb-6 italic">
                         "Nice Impressive 10/10."
                     </p>
                     <div class="flex items-center">
-                        <div class="w-12 h-12 rounded-full bg-[#e83528] flex items-center justify-center text-white font-bold mr-4">EIB</div>
+                        <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#e83528] flex items-center justify-center text-white font-bold mr-3 md:mr-4">EIB</div>
                         <div>
-                            <div class="font-bold">EIB founder</div>
-                            <div class="text-[#666] text-sm">Elysian Interior & Builders</div>
+                            <div class="font-bold text-sm md:text-base">EIB founder</div>
+                            <div class="text-[#666] text-xs md:text-sm">Elysian Interior & Builders</div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Testimonial 2 -->
-                <div class="bg-white p-8 rounded-xl shadow-sm">
+                <div class="bg-white p-6 md:p-8 rounded-xl shadow-sm">
                     <div class="text-[#7c3aed] text-3xl mb-4">
                         <i class="fas fa-quote-left"></i>
                     </div>
-                    <p class="text-[#666] mb-6 italic">
+                    <p class="text-[#666] text-sm md:text-base mb-4 md:mb-6 italic">
                         "i'm very satisified with the service for someone who is seems to be new they do very well on their job and super professional Getsfly digital"
                     </p>
                     <div class="flex items-center">
-                        <div class="w-12 h-12 rounded-full bg-[#1f1f1f] flex items-center justify-center text-white font-bold mr-4">S.I</div>
+                        <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#1f1f1f] flex items-center justify-center text-white font-bold mr-3 md:mr-4">S.I</div>
                         <div>
-                            <div class="font-bold">Sujith.I</div>
-                            <div class="text-[#666] text-sm">CEO, Theos PC</div>
+                            <div class="font-bold text-sm md:text-base">Sujith.I</div>
+                            <div class="text-[#666] text-xs md:text-sm">CEO, Theos PC</div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Testimonial 3 -->
-                <div class="bg-white p-8 rounded-xl shadow-sm">
+                <div class="bg-white p-6 md:p-8 rounded-xl shadow-sm">
                     <div class="text-[#7c3aed] text-3xl mb-4">
                         <i class="fas fa-quote-left"></i>
                     </div>
-                    <p class="text-[#666] mb-6 italic">
-                        "Getsfly Digital is hardworking, kind, and always ready to help others. Their dedication and positive attitude make them a joy to be around.""
+                    <p class="text-[#666] text-sm md:text-base mb-4 md:mb-6 italic">
+                        "Getsfly Digital is hardworking, kind, and always ready to help others. Their dedication and positive attitude make them a joy to be around."
                     </p>
                     <div class="flex items-center">
-                        <div class="w-12 h-12 rounded-full bg-[#e83528] flex items-center justify-center text-white font-bold mr-4">R</div>
+                        <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#e83528] flex items-center justify-center text-white font-bold mr-3 md:mr-4">R</div>
                         <div>
-                            <div class="font-bold">Ravi</div>
-                            <div class="text-[#666] text-sm"> Rexify Founder</div>
+                            <div class="font-bold text-sm md:text-base">Ravi</div>
+                            <div class="text-[#666] text-xs md:text-sm"> Rexify Founder</div>
                         </div>
                     </div>
                 </div>
@@ -425,124 +462,118 @@
     </section>
 
     <!-- Team Section -->
-    <section id="team" class="py-20 px-6 bg-white">
+    <section id="team" class="py-16 md:py-20 px-4 sm:px-6 bg-white">
         <div class="container mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-4">Meet the Team</h2>
-            <p class="text-xl text-center mb-16 max-w-3xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Meet the Team</h2>
+            <p class="text-lg md:text-xl text-center mb-12 md:mb-16 max-w-3xl mx-auto">
                 The creative minds behind GetsFly Digital.
             </p>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                 <!-- Team Member 1 -->
-                <div class="team-card relative h-96">
-                    <div class="team-front absolute inset-0 bg-[#f2f2f2] rounded-xl p-6 flex flex-col items-center justify-center">
-                        <div class="w-32 h-32 rounded-full bg-[#e83528] mb-4 overflow-hidden">
+                <div class="team-card relative h-80 md:h-96">
+                    <div class="team-front absolute inset-0 bg-[#f2f2f2] rounded-xl p-4 md:p-6 flex flex-col items-center justify-center">
+                        <div class="w-24 h-24 md:w-32 md:h-32 rounded-full bg-[#e83528] mb-3 md:mb-4 overflow-hidden">
                             <img src="https://i.postimg.cc/3JN2GCvR/charac-1-1.png" 
-                                 alt="Jordan Lee" 
+                                 alt="Deva" 
                                  class="w-full h-full object-cover">
                         </div>
-                        <h3 class="text-2xl font-bold">Deva</h3>
-                        <p class="text-[#7c3aed] font-medium">Creative Director</p>
+                        <h3 class="text-xl md:text-2xl font-bold">Deva</h3>
+                        <p class="text-[#7c3aed] font-medium text-sm md:text-base">Creative Director</p>
                     </div>
-                    <div class="team-back absolute inset-0 bg-[#1f1f1f] text-white rounded-xl p-6 flex flex-col items-center justify-center">
-                        <p class="text-center mb-4">
+                    <div class="team-back absolute inset-0 bg-[#1f1f1f] text-white rounded-xl p-4 md:p-6 flex flex-col items-center justify-center">
+                        <p class="text-center text-sm md:text-base mb-3 md:mb-4">
                             "Design isn't just what it looks like, it's how it works."
                         </p>
-                   
                     </div>
                 </div>
                 
                 <!-- Team Member 2 -->
-                <div class="team-card relative h-96">
-                    <div class="team-front absolute inset-0 bg-[#f2f2f2] rounded-xl p-6 flex flex-col items-center justify-center">
-                        <div class="w-32 h-32 rounded-full bg-[#7c3aed] mb-4 overflow-hidden">
+                <div class="team-card relative h-80 md:h-96">
+                    <div class="team-front absolute inset-0 bg-[#f2f2f2] rounded-xl p-4 md:p-6 flex flex-col items-center justify-center">
+                        <div class="w-24 h-24 md:w-32 md:h-32 rounded-full bg-[#7c3aed] mb-3 md:mb-4 overflow-hidden">
                             <img src="https://i.postimg.cc/jjBR8T8m/charac-2-1.png" 
                                  alt="Sujith" 
                                  class="w-full h-full object-cover">
                         </div>
-                        <h3 class="text-2xl font-bold">Sujith</h3>
-                        <p class="text-[#7c3aed] font-medium">Video Editing Expert</p>
+                        <h3 class="text-xl md:text-2xl font-bold">Sujith</h3>
+                        <p class="text-[#7c3aed] font-medium text-sm md:text-base">Video Editing Expert</p>
                     </div>
-                    <div class="team-back absolute inset-0 bg-[#1f1f1f] text-white rounded-xl p-6 flex flex-col items-center justify-center">
-                        <p class="text-center mb-4">
+                    <div class="team-back absolute inset-0 bg-[#1f1f1f] text-white rounded-xl p-4 md:p-6 flex flex-col items-center justify-center">
+                        <p class="text-center text-sm md:text-base mb-3 md:mb-4">
                             "Every frame has purpose."
                         </p>
-                
                     </div>
                 </div>
                 
-                
-         <!-- Team Member 3 -->
-<div class="team-card relative h-96">
-    <div class="team-front absolute inset-0 bg-[#f2f2f2] rounded-xl p-6 flex flex-col items-center justify-center">
-        <div class="w-32 h-32 rounded-full bg-[#e83528] mb-4 overflow-hidden">
-            <img src="https://i.postimg.cc/LsPqSYkD/image.png" 
-                 alt="Marcus Chen" 
-                 class="w-full h-full object-cover">
-        </div>
-        <h3 class="text-2xl font-bold">Chidambaram</h3>
-        <p class="text-[#7c3aed] font-medium">Marketing and business strategist</p>
-    </div>
-
-    <div class="team-back absolute inset-0 bg-[#1f1f1f] text-white rounded-xl p-6 flex flex-col items-center justify-center">
-        <p class="text-center mb-4">
-            "Smart strategy fuels sustainable business growth."
-        </p>
-    </div>
-</div>
-
+                <!-- Team Member 3 -->
+                <div class="team-card relative h-80 md:h-96">
+                    <div class="team-front absolute inset-0 bg-[#f2f2f2] rounded-xl p-4 md:p-6 flex flex-col items-center justify-center">
+                        <div class="w-24 h-24 md:w-32 md:h-32 rounded-full bg-[#e83528] mb-3 md:mb-4 overflow-hidden">
+                            <img src="https://i.postimg.cc/LsPqSYkD/image.png" 
+                                 alt="Marcus Chen" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold">Chidambaram</h3>
+                        <p class="text-[#7c3aed] font-medium text-sm md:text-base">Marketing and business strategist</p>
+                    </div>
+                    <div class="team-back absolute inset-0 bg-[#1f1f1f] text-white rounded-xl p-4 md:p-6 flex flex-col items-center justify-center">
+                        <p class="text-center text-sm md:text-base mb-3 md:mb-4">
+                            "Smart strategy fuels sustainable business growth."
+                        </p>
+                    </div>
+                </div>
                 
                 <!-- Team Member 4 -->
-                <div class="team-card relative h-96">
-                    <div class="team-front absolute inset-0 bg-[#f2f2f2] rounded-xl p-6 flex flex-col items-center justify-center">
-                        <div class="w-32 h-32 rounded-full bg-[#7c3aed] mb-4 overflow-hidden">
+                <div class="team-card relative h-80 md:h-96">
+                    <div class="team-front absolute inset-0 bg-[#f2f2f2] rounded-xl p-4 md:p-6 flex flex-col items-center justify-center">
+                        <div class="w-24 h-24 md:w-32 md:h-32 rounded-full bg-[#7c3aed] mb-3 md:mb-4 overflow-hidden">
                             <img src="https://i.postimg.cc/fTdfHLpc/image.png" 
                                  alt="Taylor Wright" 
                                  class="w-full h-full object-cover">
                         </div>
-                        <h3 class="text-2xl font-bold">Yasar</h3>
-                        <p class="text-[#7c3aed] font-medium">Content Management Lead</p>
+                        <h3 class="text-xl md:text-2xl font-bold">Yasar</h3>
+                        <p class="text-[#7c3aed] font-medium text-sm md:text-base">Content Management Lead</p>
                     </div>
-                    <div class="team-back absolute inset-0 bg-[#1f1f1f] text-white rounded-xl p-6 flex flex-col items-center justify-center">
-                        <p class="text-center mb-4">
+                    <div class="team-back absolute inset-0 bg-[#1f1f1f] text-white rounded-xl p-4 md:p-6 flex flex-col items-center justify-center">
+                        <p class="text-center text-sm md:text-base mb-3 md:mb-4">
                             "Organize content deliver value every time."
                         </p>
-            
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-   <!-- Contact Section -->
-<section id="contact" class="py-20 px-6 bg-[#1f1f1f] text-white">
-    <div class="container mx-auto">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-4xl font-bold mb-4">Let's Build Something 🔥</h2>
-            <p class="text-xl mb-12">
-                Whether you're launching or scaling, we're here to design the digital side of your brand.
-            </p>
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 md:py-20 px-4 sm:px-6 bg-[#1f1f1f] text-white">
+        <div class="container mx-auto">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Let's Build Something 🔥</h2>
+                <p class="text-lg md:text-xl mb-8 md:mb-12">
+                    Whether you're launching or scaling, we're here to design the digital side of your brand.
+                </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                <div>
-                    <label for="name" class="block mb-2 font-medium">Your Name</label>
-                    <input type="text" id="name" class="w-full px-4 py-3 rounded-lg bg-[#333] border border-[#555] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]">
-                </div>
-                <div>
-                    <label for="email" class="block mb-2 font-medium">Email Address</label>
-                    <input type="email" id="email" class="w-full px-4 py-3 rounded-lg bg-[#333] border border-[#555] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]">
-                </div>
-                <div class="md:col-span-2">
-                    <label for="project" class="block mb-2 font-medium">Project Type</label>
-                    <select id="project" class="w-full px-4 py-3 rounded-lg bg-[#333] border border-[#555] focus:outline-none focus:ring-2 focus:ring-[#7c3aed]">
-                        <option value="">Select a service</option>
-                        <option value="Branding">Business Kit</option>
-                        <option value="Website Design">Website Developement</option>
-                        <option value="Social Media">Social Media Management</option>
-                        <option value="Video Production">Video Editing</option>
-                        <option value="Ecommerce">Graphic Designs</option>
-                        <option value="Other">Other</option>
-                    </select>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 text-left">
+                    <div>
+                        <label for="name" class="block mb-2 font-medium text-sm md:text-base">Your Name</label>
+                        <input type="text" id="name" class="w-full px-4 py-2 md:py-3 rounded-lg bg-[#333] border border-[#555] focus:outline-none focus:ring-2 focus:ring-[#7c3aed] text-sm md:text-base">
+                    </div>
+                    <div>
+                        <label for="email" class="block mb-2 font-medium text-sm md:text-base">Email Address</label>
+                        <input type="email" id="email" class="w-full px-4 py-2 md:py-3 rounded-lg bg-[#333] border border-[#555] focus:outline-none focus:ring-2 focus:ring-[#7c3aed] text-sm md:text-base">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="project" class="block mb-2 font-medium text-sm md:text-base">Project Type</label>
+                        <select id="project" class="w-full px-4 py-2 md:py-3 rounded-lg bg-[#333] border border-[#555] focus:outline-none focus:ring-2 focus:ring-[#7c3aed] text-sm md:text-base">
+                            <option value="">Select a service</option>
+                            <option value="Branding">Business Kit</option>
+                            <option value="Website Design">Website Developement</option>
+                            <option value="Social Media">Social Media Management</option>
+                            <option value="Video Production">Video Editing</option>
+                            <option value="Ecommerce">Graphic Designs</option>
+                            <option value="Other">Other</option>
+                        </select>
                 </div>
                 <div class="md:col-span-2">
                     <label for="message" class="block mb-2 font-medium">Tell Us About Your Project</label>
@@ -684,5 +715,4 @@
         });
     </script>
 </body>
-
 </html>
